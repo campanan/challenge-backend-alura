@@ -31,10 +31,7 @@ public class DespesaController {
 
     @PostMapping
     public ResponseEntity<Despesa> save(@RequestBody @Valid DespesaDTO despesaDto){
-
-        Despesa despesa = despesaService.save(despesaDto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(despesa.getId()).toUri();
-        return ResponseEntity.created(uri).body(despesa);
+        return despesaService.save(despesaDto);
     }
 
     @GetMapping
